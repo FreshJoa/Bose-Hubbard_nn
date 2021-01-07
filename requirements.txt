@@ -1,0 +1,3 @@
+
+-e git+https://github.com/FreshJoa/netket.git@master#egg=netket
+
