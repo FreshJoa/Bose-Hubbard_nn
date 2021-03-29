@@ -1,6 +1,5 @@
 import netket as nk
 
-
 def RBM_bose_hubbard_model(U, J, particle_numbers, sites_number, alpha, iteration_number, output_directory):
     g = nk.graph.Hypercube(length=sites_number, n_dim=1, pbc=True)
 
@@ -35,20 +34,15 @@ def RBM_bose_hubbard_model(U, J, particle_numbers, sites_number, alpha, iteratio
 
 
 if __name__ == "__main__":
-    J = [0.29]
+    J = [0.000001]
     U = 1.
-    lattice_size = [50]
-    iterations = 16000
-    alpha = 3
+    lattice_size = [12]
+    iterations = 40
+    alpha = 4
 
     # FILES_DIRECTORY_PATH = f'architektury/phase_diagram_recostruction/J_{J[0]}_{J[-1]}_lattice_{lattice_size[0]}_{lattice_size[-1]}_iter{iterations}'
-    FILES_DIRECTORY_PATH = 'app/output.txt'
+    FILES_DIRECTORY_PATH = '.'
+
     PREFIX = 'Sgd_lr_0.05_'
-    for j in J:
-        for lattice in lattice_size:
-            RBM_bose_hubbard_model(U, j, lattice, lattice, alpha, iterations,
-                                   f'{FILES_DIRECTORY_PATH}/phase_diagram_J{j}_N{lattice}_L{lattice}_alpha{alpha}_iter_{iterations}_{PREFIX}')
-            RBM_bose_hubbard_model(U, j, lattice - 1, lattice, alpha, iterations,
-                                   f'{FILES_DIRECTORY_PATH}/phase_diagram_J{j}_N{lattice - 1}_L{lattice}_alpha{alpha}_iter_{iterations}_{PREFIX}')
-            RBM_bose_hubbard_model(U, j, lattice + 1, lattice, alpha, iterations,
-                                   f'{FILES_DIRECTORY_PATH}/phase_diagram_J{j}_N{lattice + 1}_L{lattice}_alpha{alpha}_iter_{iterations}_{PREFIX}')
+
+    RBM_bose_hubbard_model(U, J[0], lattice_size[0], lattice_size[0], alpha, iterations, 'test')

@@ -38,15 +38,15 @@ COPY requirements.txt .
 
 RUN python3.6 -m pip  install -r requirements.txt
 
-RUN mkdir /app
+RUN mkdir /log
 
 # Run the application:
-COPY bose_hubbard_testing.py /app
-ADD output.txt /app
+COPY bose_hubbard_testing.py .
 
-WORKDIR /app
-VOLUME /app
 
 CMD ["./bose_hubbard_testing.py"]
 ENTRYPOINT ["python3"]
 
+# sudo docker build -t [docker_image_name] .
+# sudo docker save [docker_ID] -o [docker_name].tar # in order to check [docker_ID] execute: sudo docker images
+# sudo singularity build [singularity_name].sif docker-archive:[docker_name].tar
